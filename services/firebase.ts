@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, onValue } from "firebase/database";
+import { getDatabase, ref, push, onValue, get, set } from "firebase/database";
+import { PERFORMANCE_ENTRIES } from '../constants';
 
 // Your web app's Firebase configuration from the prompt
 const firebaseConfig = {
@@ -18,6 +19,41 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const performanceEntriesRef = ref(db, 'performance_entries');
+
+export class FirebasePermissionError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'FirebasePermissionError';
+    }
+}
+
+export const seedDatabase = async () => {
+    try {
+        const snapshot = await get(performanceEntriesRef);
+        if (!snapshot.exists() || Object.keys(snapshot.val() || {}).length === 0) {
+            console.log("Database is empty. Seeding with initial data...");
+            const updates: { [key: string]: (string | number)[] } = {};
+            PERFORMANCE_ENTRIES.forEach(entry => {
+                const newEntryKey = push(performanceEntriesRef).key;
+                if(newEntryKey) {
+                    updates[newEntryKey] = entry;
+                }
+            });
+            await set(performanceEntriesRef, updates);
+            console.log("Database seeded successfully.");
+        } else {
+            console.log("Database already contains data. No seeding needed.");
+        }
+    } catch (error: any) {
+        console.error("Error seeding database:", error);
+        if (error.code === 'PERMISSION_DENIED' || (error.message && error.message.toLowerCase().includes('permission denied'))) {
+            throw new FirebasePermissionError(
+                'Firebase permission denied. Please update your Realtime Database rules.'
+            );
+        }
+        throw error; // re-throw other errors
+    }
+};
 
 // The entry type that the form will produce
 export interface NewPerformanceEntryData {

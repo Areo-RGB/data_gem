@@ -5,7 +5,8 @@ import { PerformanceEntry } from './types';
 import Dashboard from './components/Dashboard';
 import PlayerView from './components/PlayerView';
 import AddResult from './components/AddResult';
-import { listenForPerformanceEntries } from './services/firebase';
+import { listenForPerformanceEntries, seedDatabase, FirebasePermissionError } from './services/firebase';
+import FirebasePermissionErrorModal from './components/FirebasePermissionErrorModal';
 
 type View = 'dashboard' | 'playerView' | 'addResult';
 
@@ -13,11 +14,29 @@ const App: React.FC = () => {
   const [activeView, setActiveView] = useState<View>('dashboard');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [performanceEntries, setPerformanceEntries] = useState<(string | number)[][]>([]);
+  const [dbError, setDbError] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = listenForPerformanceEntries(data => {
-      setPerformanceEntries(data);
-    });
+    let unsubscribe: () => void = () => {};
+
+    const initializeDb = async () => {
+      try {
+        await seedDatabase();
+        unsubscribe = listenForPerformanceEntries(data => {
+            setPerformanceEntries(data);
+        });
+      } catch (error) {
+        if (error instanceof FirebasePermissionError) {
+            setDbError(error.message);
+        } else {
+            setDbError("An unexpected error occurred while connecting to the database.");
+            console.error(error);
+        }
+      }
+    };
+    
+    initializeDb();
+
     return () => unsubscribe();
   }, []);
 
@@ -59,6 +78,10 @@ const App: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
+  if (dbError) {
+    return <FirebasePermissionErrorModal />;
+  }
 
   const SidebarContent: React.FC = () => (
     <div className="p-4 md:p-6">

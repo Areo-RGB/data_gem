@@ -24,18 +24,40 @@
         background-color: #718096; /* Corresponds to bg-gray-500 */
       }
     </style>
-  <script type="importmap">
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDcR7KzILxjXrIqe7Xe9v33C9QugQbjLuM",
+    authDomain: "multi-e4d82.firebaseapp.com",
+    databaseURL: "https://multi-e4d82-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "multi-e4d82",
+    storageBucket: "multi-e4d82.firebasestorage.app",
+    messagingSenderId: "302955593473",
+    appId: "1:302955593473:web:975dc9079614ef137b6500",
+    measurementId: "G-P4C0X8XWYN"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<script type="importmap">
 {
   "imports": {
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.3.0",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
     "clsx": "https://aistudiocdn.com/clsx@^2.1.1",
-    "firebase/app": "https://aistudiocdn.com/firebase@^10.12.3/firebase-app.js",
-    "firebase/database": "https://aistudiocdn.com/firebase@^10.12.3/firebase-database.js",
-    "firebase/": "https://aistudiocdn.com/firebase@^10.12.3/"
+    "recharts": "https://aistudiocdn.com/recharts@^3.3.0"
   }
 }
 </script>
