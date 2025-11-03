@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface AnalysisCardProps {
@@ -8,17 +7,17 @@ interface AnalysisCardProps {
 
 const LoadingSpinner: React.FC = () => (
     <div className="flex items-center justify-center space-x-2">
-        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-400"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-400" style={{ animationDelay: '0.2s' }}></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-400" style={{ animationDelay: '0.4s' }}></div>
-        <span className="ml-2 text-gray-300">Analyzing data... please wait.</span>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-500"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-500" style={{ animationDelay: '0.2s' }}></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-blue-500" style={{ animationDelay: '0.4s' }}></div>
+        <span className="ml-2 text-slate-300">Analyzing data... please wait.</span>
     </div>
 );
 
 const AnalysisCard: React.FC<AnalysisCardProps> = ({ analysis, isLoading }) => {
     if (isLoading) {
         return (
-            <div className="bg-gray-800 p-6 rounded-xl shadow-lg animate-pulse">
+            <div className="bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl rounded-xl p-6">
                 <LoadingSpinner />
             </div>
         );
@@ -43,9 +42,9 @@ const AnalysisCard: React.FC<AnalysisCardProps> = ({ analysis, isLoading }) => {
     }
 
     return (
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+        <div className="bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl rounded-xl p-6">
             <h3 className="text-2xl font-bold text-white mb-4">AI Performance Insights</h3>
-            <div className="prose prose-invert max-w-none text-gray-300 space-y-2">
+            <div className="prose prose-invert max-w-none text-slate-300 space-y-2">
                  {renderMarkdown(analysis)}
             </div>
         </div>

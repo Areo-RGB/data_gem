@@ -74,11 +74,11 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
 
   return (
     <div className="space-y-8">
-      <div className="bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg">
+      <div className="bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl rounded-xl p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div className="flex-grow">
                  <h2 className="text-2xl sm:text-3xl font-bold text-white">Performance Analysis</h2>
-                 <p className="text-gray-400 mt-1">AI-powered insights into team performance.</p>
+                 <p className="text-slate-300 mt-1">AI-powered insights into team performance.</p>
             </div>
             <div className="flex items-center gap-4 w-full sm:w-auto">
                  <ThinkingModeToggle enabled={thinkingMode} onChange={setThinkingMode} />
@@ -111,7 +111,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
 
       {fullscreenDrill && fullscreenChartData && (
         <div 
-            className="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
+            className="fixed inset-0 bg-black/50 backdrop-blur-xl z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
             onClick={handleCloseFullscreen}
         >
             <div 
@@ -125,7 +125,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
                 />
                 <button 
                     onClick={handleCloseFullscreen}
-                    className="absolute top-3 right-3 text-gray-400 hover:text-white z-20"
+                    className="absolute top-3 right-3 text-gray-300 hover:text-white z-20"
                     aria-label="Close fullscreen view"
                 >
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

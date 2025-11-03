@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ThinkingModeToggleProps {
@@ -9,15 +8,15 @@ interface ThinkingModeToggleProps {
 const ThinkingModeToggle: React.FC<ThinkingModeToggleProps> = ({ enabled, onChange }) => {
   return (
     <div className="flex items-center space-x-3">
-      <label htmlFor="thinking-mode-toggle" className="text-sm font-medium text-gray-300">
+      <label htmlFor="thinking-mode-toggle" className="text-sm font-medium text-slate-300">
         Thinking Mode
       </label>
       <button
         type="button"
         id="thinking-mode-toggle"
         className={`${
-          enabled ? 'bg-blue-600' : 'bg-gray-600'
-        } relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800`}
+          enabled ? 'bg-blue-600' : 'bg-white/20'
+        } relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500`}
         role="switch"
         aria-checked={enabled}
         onClick={() => onChange(!enabled)}

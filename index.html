@@ -7,21 +7,35 @@
     <title>Player Performance Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Using a more modern, sleeker scrollbar */
+      body {
+        background-color: #1e293b; /* Fallback: Tailwind slate-800 */
+        background-image:
+            /* Grid Pattern (top layer) */
+            linear-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+            linear-gradient(to right, rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+            /* Brighter, colorful gradients (bottom layer) */
+            radial-gradient(circle at 15% 25%, #4338ca 0%, transparent 40%),
+            radial-gradient(circle at 85% 75%, #0e7490 0%, transparent 40%);
+        background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+        background-attachment: fixed;
+        color: #e2e8f0; /* Tailwind slate-200 */
+      }
+      /* Dark theme scrollbar to match the new background */
       ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #1a202c; /* Corresponds to bg-gray-900 */
+        background: rgba(255, 255, 255, 0.05);
       }
       ::-webkit-scrollbar-thumb {
-        background-color: #4a5568; /* Corresponds to bg-gray-600 */
+        background-color: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
-        border: 2px solid #1a202c; /* Corresponds to bg-gray-900 */
+        border: 2px solid transparent;
+        background-clip: content-box;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background-color: #718096; /* Corresponds to bg-gray-500 */
+        background-color: rgba(255, 255, 255, 0.4);
       }
     </style>
  <script type="module">
@@ -38,7 +52,7 @@
     authDomain: "multi-e4d82.firebaseapp.com",
     databaseURL: "https://multi-e4d82-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "multi-e4d82",
-    storageBucket: "multi-e4d82.firebasestorage.app",
+    storageBucket: "multi-e4d82.appspot.com",
     messagingSenderId: "302955593473",
     appId: "1:302955593473:web:975dc9079614ef137b6500",
     measurementId: "G-P4C0X8XWYN"
@@ -57,14 +71,16 @@
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
     "clsx": "https://aistudiocdn.com/clsx@^2.1.1",
-    "recharts": "https://aistudiocdn.com/recharts@^3.3.0"
+    "chart.js": "https://aistudiocdn.com/chart.js@^4.4.3",
+    "react-chartjs-2": "https://aistudiocdn.com/react-chartjs-2@^5.2.0",
+    "chartjs-adapter-date-fns": "https://aistudiocdn.com/chartjs-adapter-date-fns@^3.0.0"
   }
 }
 </script>
 </head>
-  <body class="bg-gray-900 text-gray-100">
+  <body>
     <div id="root"></div>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
       <symbol id="menu-icon">
         <line x1="3" y1="12" x2="21" y2="12"></line>
         <line x1="3" y1="6" x2="21" y2="6"></line>

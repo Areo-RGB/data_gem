@@ -69,17 +69,17 @@ const AddResult: React.FC<AddResultProps> = ({ playerNames }) => {
     return (
         <div className="max-w-2xl mx-auto space-y-6">
             <h2 className="text-3xl font-bold text-white">Log New Performance Result</h2>
-            <form onSubmit={handleSubmit} className="bg-gray-800 p-6 rounded-xl shadow-lg space-y-6">
+            <form onSubmit={handleSubmit} className="bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl rounded-xl p-6 space-y-6">
                 
                 <div>
-                    <label htmlFor="player-name" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="player-name" className="block text-sm font-medium text-slate-300 mb-2">
                         Player Name
                     </label>
                     <select
                         id="player-name"
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        className="w-full bg-gray-700 text-white border border-gray-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-black/30 text-white border border-white/10 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                         {playerNames.map(playerName => (
                             <option key={playerName} value={playerName}>{PLAYER_INFO[playerName as keyof typeof PLAYER_INFO].fullName}</option>
@@ -88,14 +88,14 @@ const AddResult: React.FC<AddResultProps> = ({ playerNames }) => {
                 </div>
                 
                 <div>
-                    <label htmlFor="drill" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="drill" className="block text-sm font-medium text-slate-300 mb-2">
                         Drill
                     </label>
                     <select
                         id="drill"
                         value={drill}
                         onChange={e => setDrill(e.target.value)}
-                        className="w-full bg-gray-700 text-white border border-gray-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-black/30 text-white border border-white/10 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                         {DRILLS.map(drillName => (
                             <option key={drillName} value={drillName}>{drillName}</option>
@@ -104,7 +104,7 @@ const AddResult: React.FC<AddResultProps> = ({ playerNames }) => {
                 </div>
 
                 <div>
-                    <label htmlFor="score" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="score" className="block text-sm font-medium text-slate-300 mb-2">
                         Score
                     </label>
                     <input
@@ -112,13 +112,13 @@ const AddResult: React.FC<AddResultProps> = ({ playerNames }) => {
                         id="score"
                         value={score}
                         onChange={e => setScore(e.target.value)}
-                        className="w-full bg-gray-700 text-white border border-gray-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-black/30 text-white border border-white/10 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder:text-slate-500"
                         placeholder={`e.g., for ${drill} in ${UNITS[drill]}`}
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="date" className="block text-sm font-medium text-slate-300 mb-2">
                         Date
                     </label>
                     <input
@@ -126,7 +126,7 @@ const AddResult: React.FC<AddResultProps> = ({ playerNames }) => {
                         id="date"
                         value={date}
                         onChange={e => setDate(e.target.value)}
-                        className="w-full bg-gray-700 text-white border border-gray-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-black/30 text-white border border-white/10 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
                 

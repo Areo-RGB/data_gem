@@ -92,10 +92,10 @@ const App: React.FC = () => {
             <button
               onClick={() => handleViewChange('dashboard')}
               className={clsx(
-                'w-full text-left px-4 py-2 rounded-md transition-colors duration-200',
+                'w-full text-left px-4 py-2 rounded-md transition-colors duration-200 text-slate-200',
                 activeView === 'dashboard'
-                  ? 'bg-blue-600 text-white'
-                  : 'hover:bg-gray-700'
+                  ? 'bg-blue-500 text-white font-semibold'
+                  : 'hover:bg-white/10'
               )}
             >
               Drill Dashboard
@@ -105,10 +105,10 @@ const App: React.FC = () => {
             <button
               onClick={() => handleViewChange('playerView')}
               className={clsx(
-                'w-full text-left px-4 py-2 rounded-md transition-colors duration-200',
+                'w-full text-left px-4 py-2 rounded-md transition-colors duration-200 text-slate-200',
                 activeView === 'playerView'
-                  ? 'bg-blue-600 text-white'
-                  : 'hover:bg-gray-700'
+                  ? 'bg-blue-500 text-white font-semibold'
+                  : 'hover:bg-white/10'
               )}
             >
               Player View
@@ -118,10 +118,10 @@ const App: React.FC = () => {
             <button
               onClick={() => handleViewChange('addResult')}
               className={clsx(
-                'w-full text-left px-4 py-2 rounded-md transition-colors duration-200',
+                'w-full text-left px-4 py-2 rounded-md transition-colors duration-200 text-slate-200',
                 activeView === 'addResult'
-                  ? 'bg-blue-600 text-white'
-                  : 'hover:bg-gray-700'
+                  ? 'bg-blue-500 text-white font-semibold'
+                  : 'hover:bg-white/10'
               )}
             >
               Add Result
@@ -133,33 +133,33 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row font-sans bg-gray-900 text-gray-100">
+    <div className="min-h-screen flex flex-col md:flex-row font-sans">
       {/* Header for mobile */}
-      <header className="md:hidden bg-gray-800 text-white p-4 flex justify-between items-center sticky top-0 z-20">
+      <header className="md:hidden bg-black/30 backdrop-blur-lg border-b border-white/10 text-white p-4 flex justify-between items-center sticky top-0 z-20">
         <h1 className="text-xl font-bold">Analytics</h1>
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="z-30">
-          <svg className="w-6 h-6" fill="none">
+          <svg className="w-6 h-6" stroke="currentColor" fill="none">
             <use href={isMenuOpen ? "#close-icon" : "#menu-icon"} />
           </svg>
         </button>
       </header>
       
       {/* Sidebar for desktop */}
-      <aside className="hidden md:block w-56 bg-gray-800 text-gray-200 flex-shrink-0">
+      <aside className="hidden md:block w-56 bg-black/30 backdrop-blur-lg border-r border-white/10 flex-shrink-0">
         <SidebarContent />
       </aside>
 
       {/* Mobile Menu Overlay */}
       <div 
         className={clsx(
-          "md:hidden fixed inset-0 bg-gray-900 bg-opacity-75 z-10 transition-opacity",
+          "md:hidden fixed inset-0 bg-black/50 z-10 transition-opacity",
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
         onClick={() => setIsMenuOpen(false)}
       ></div>
       <div
         className={clsx(
-          "md:hidden fixed top-0 left-0 h-full w-64 bg-gray-800 z-20 transform transition-transform",
+          "md:hidden fixed top-0 left-0 h-full w-64 bg-black/30 backdrop-blur-lg border-r border-white/10 z-20 transform transition-transform",
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
