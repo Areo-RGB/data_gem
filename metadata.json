@@ -1,0 +1,5 @@
+{
+  "name": "Player Performance Analytics Dashboard",
+  "description": "A web application that analyzes and visualizes player performance data using interactive charts and AI-powered insights, based on an initial Google Apps Script.",
+  "requestFramePermissions": []
+}
